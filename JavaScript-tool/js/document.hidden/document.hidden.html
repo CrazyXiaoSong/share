@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">啊啊啊啊</button>
+
+</body>
+<script>
+    //网页当前状态判断
+//    var hidden, state, visibilityChange;
+//    if (typeof document.hidden !== "undefined") {
+//        hidden = "hidden";
+//        visibilityChange = "visibilitychange";
+//        state = "visibilityState";
+//    }
+    // 添加监听器，在title里显示状态变化
+//    document.visibilitychange = function () {
+//        document.title = document[state];
+//    }
+    document.getElementById("btn").addEventListener("click",function () {
+        alert(1);
+    })
+    document.getElementById("btn").addEventListener("click",function () {
+        alert(2);
+    })
+    document.addEventListener("visibilitychange", function() {
+        document.title = document['visibilityState'];
+    }, false);
+    //初始化页面状态
+    document.title = document['visibilityState'];
+</script>
+</html>

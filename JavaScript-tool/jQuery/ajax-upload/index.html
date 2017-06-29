@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="uploadForm" action="">
+    <input name="file" type="file" id="file" onchange="upload()">
+</form>
+<div id="serverResponse"></div>
+<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    function upload() {
+        var formData = new FormData($( "#uploadForm" )[0]);
+        $.ajax({
+            url: 'upload.php' ,
+            type: 'POST',
+            data: formData,
+            async: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                $( '#serverResponse').html(returndata);
+            },
+            error: function (returndata) {
+                $( '#serverResponse').html(returndata);
+            }
+        });
+
+    }
+
+</script>
+</body>
+</html>
