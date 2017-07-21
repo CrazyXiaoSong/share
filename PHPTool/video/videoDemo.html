@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+        .main-bar{
+            border: 1px solid red;
+            padding: 1px 0;
+        }
+        .进度{
+            height: 5px;
+            background: green;
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <video id="player" width="100%" controls>
+        <source src="https://20854390.github.io/Lemon/video/lemon_laugh1.mp4">
+    </video>
+    <div class="main-bar">
+        <p class="进度"></p>
+    </div>
+    <br>
+    <div class="main-tool">
+        <button onclick="pausePlay()">播放/暂停</button>
+        <p><span class="当前时间">0:00</span>/<span class="视频总长">0:00</span></p>
+    </div>
+</div>
+
+
+<script>
+    var video = document.getElementById("player");
+    video.ontimeupdate = function () {
+        document.getElementsByClassName("进度")[0].style.width = video.currentTime / video.duration * 100 +"%";
+        var time = video.currentTime;
+        console.log(time);
+        var m = parseInt(time/60);
+        var s = parseInt(time % 60);
+        document.getElementsByClassName("当前时间")[0].innerHTML = m + ":" + s;
+    };
+    function pausePlay() {
+        if(video.paused){
+            video.play();
+        }else {
+            video.pause();
+        }
+    }
+    var i =setInterval(function () {
+        if(video.readyState > 0){
+            console.log(video.duration);
+            var s = parseInt(video.duration % 60);
+            var m = parseInt(video.duration / 60);
+            document.getElementsByClassName("视频总长")[0].innerHTML = m + ":" + s;
+            clearInterval(i);
+        }
+    });
+
+</script>
+</body>
+</html>

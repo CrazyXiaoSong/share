@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $.ajax({
+        url:"http://api.laifudao.com/open/xiaohua.json",
+        type:"GET",
+        dataType:'json',
+        success:function (data) {
+            console.log(data)
+        },
+        error:function (error) {
+            console.log(error);
+        }
+    })
+
+</script>
+</html>
